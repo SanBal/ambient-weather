@@ -45,6 +45,7 @@ img {
   bottom: 0;
   margin: auto;
   color: #673ab7;
+  font-size: revert
 }
 
 @media screen and (max-width: 460px) {

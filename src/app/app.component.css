@@ -5,10 +5,11 @@ app-header {
 .drawer-container {
   background: white;
   height: 90%;
+  padding: 1rem;
 }
 
 mat-drawer {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .mat-drawer-container {
