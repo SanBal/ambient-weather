@@ -1,12 +1,11 @@
 <span>
-  {{question}}
-  <mat-form-field>
-  <input matInput placeholder="Location" [formControl]="locationFormControl"/>
-</mat-form-field>?
-  <button mat-icon-button
-          [disabled]="!locationFormControl.valid"
-          (click)="onSearch()"
-  >
-    <mat-icon>search</mat-icon>
-  </button>
+  {{ question }}
+  <mat-form-field class="location-field">
+    <input matInput placeholder="Location" [formControl]="locationFormControl" (keydown.enter)="search()"/>
+    <button *ngIf="locationFormControl.valid"
+            id="clear-button"
+            matSuffix mat-icon-button aria-label="Clear" (click)="clearLocation()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field> ?
 </span>

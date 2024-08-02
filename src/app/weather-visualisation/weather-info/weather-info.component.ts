@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {MatFormField} from "@angular/material/form-field";
+import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
@@ -8,6 +8,7 @@ import {WeatherInfo} from "./weather-info";
 import {WeatherInfoService} from "./weather-info.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {first} from "rxjs";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'weather-info',
@@ -17,7 +18,10 @@ import {first} from "rxjs";
     MatIcon,
     MatIconButton,
     MatInput,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatLabel,
+    MatSuffix,
+    NgIf
   ],
   templateUrl: './weather-info.component.html',
   styleUrl: './weather-info.component.css',
@@ -57,20 +61,29 @@ export class WeatherInfoComponent implements ControlValueAccessor {
     // not implemented
   }
 
-  public onSearch(): void {
+  public search(): void {
     const location = this.locationFormControl.value
     this.service.getInfo(location)
       .pipe(first())
       .subscribe({
-        next: info => this.onChange && this.onChange(info),
+        next: info => this.emit(info),
         error: () => {
           this.snackBar.open(
             `No weather info available for "${location}"`,
             'Ok',
             { duration: 5000 }
           )
-          this.onChange && this.onChange(null)
+          this.emit(null)
         }
       })
+  }
+
+  public clearLocation(): void {
+    this.locationFormControl.setValue("")
+    this.emit(null)
+  }
+
+  private emit(info: WeatherInfo | null): void {
+    return this.onChange && this.onChange(info);
   }
 }

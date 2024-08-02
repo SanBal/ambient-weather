@@ -1,8 +1,13 @@
 .drawer-container {
   background: white;
   height: 100%;
+  padding: 1rem;
 }
 
 .mat-drawer-content {
   overflow: hidden !important;
+}
+
+.mat-drawer-container {
+  color: black;
 }
