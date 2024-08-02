@@ -1,12 +1,13 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-// @ts-ignore
-import * as d3 from 'd3';
 import {WeatherVisualisationComponent} from "../weather-visualisation.component";
 import {WeatherInfo} from "../weather-info/weather-info";
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {WeatherInfoComponent} from "../weather-info/weather-info.component";
 import {WeatherInfoService} from "../weather-info/weather-info.service";
+
+// @ts-ignore
+import * as d3 from 'd3';
 
 const MIN_TEMPERATURE = -60
 const MAX_TEMPERATURE = 60
