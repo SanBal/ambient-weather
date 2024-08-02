@@ -1,11 +1,14 @@
-.drawer-container {
-  background: white;
-  height: 100%;
-  padding: 1rem;
+app-header {
+  height: 10%;
 }
 
-.mat-drawer-content {
-  overflow: hidden !important;
+.drawer-container {
+  background: white;
+  height: 90%;
+}
+
+mat-drawer {
+  margin-top: 4rem;
 }
 
 .mat-drawer-container {
